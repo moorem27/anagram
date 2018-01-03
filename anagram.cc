@@ -50,7 +50,6 @@ int main( int argc, char* argv[] ) {
 
     if( argc == 2 ) {
         const std::string search_word = std::string{ argv[ 1 ] };
-        std::cout << "Searching for anagrams of the word: " << search_word << std::endl;
         auto word_map = create_word_map( WORD_FILE );
         auto anagrams = find_anagram( search_word, word_map );
 
