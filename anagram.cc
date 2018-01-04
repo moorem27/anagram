@@ -19,9 +19,9 @@ std::map<int, std::set<std::string>> create_word_map( const std::string& file_pa
         while( std::getline( word_file, place_holder ) ) {
             std::transform( place_holder.begin(), place_holder.end(), place_holder.begin(), ::tolower );
             if( word_map.find( place_holder.size() ) == word_map.end() ) {
-                std::set<std::string> v{};
-                v.insert( place_holder );
-                word_map[ place_holder.size() ] = v;
+                std::set<std::string> word_set{};
+                word_set.insert( place_holder );
+                word_map[ place_holder.size() ] = word_set;
             } else {
                 word_map[ place_holder.size() ].insert( place_holder );
             }
@@ -66,8 +66,8 @@ void get_all_anagrams( const std::string& word_file_path ) {
             output_file << place_holder;
             output_file << " ";
             std::transform( place_holder.begin(), place_holder.end(), place_holder.begin(), ::tolower );
-            for( const auto& a : find_anagrams( place_holder, word_map ) ) {
-                output_file << a;
+            for( const auto& anagram : find_anagrams( place_holder, word_map ) ) {
+                output_file << anagram;
                 output_file << " ";
             }
             output_file << "\n";
@@ -91,8 +91,8 @@ int main( int argc, char* argv[] ) {
             return 0;
         }
 
-        for( const auto& a : anagrams ) {
-            std::cout << a << std::endl;
+        for( const auto& anagram : anagrams ) {
+            std::cout << anagram << std::endl;
         }
     } else {
         std::cout << "Please enter one command line argument" << std::endl;
