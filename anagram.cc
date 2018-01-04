@@ -48,7 +48,11 @@ std::set<std::string> find_anagrams( const std::string& word, std::map<int, std:
     return anagrams;
 }
 
-// Call this function in main to create a file of words and their
+// Call this function in main: 
+// 
+// get_all_anagrams( WORD_FILE );
+//
+// to create a file of words and their
 // anagrams, based on /usr/share/dict/words
 void get_all_anagrams( const std::string& word_file_path ) {
     std::ifstream word_file( word_file_path, std::ios::binary );
