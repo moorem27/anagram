@@ -46,9 +46,11 @@ std::set<std::string> find_anagrams( std::string& word, const std::string& file_
     if( word_file.is_open() ) {
         while( std::getline( word_file, place_holder ) ) {
             std::transform( place_holder.begin(), place_holder.end(), place_holder.begin(), ::tolower );
-            if( place_holder.size() == word.size() && std::is_permutation( word.begin(), word.end(), place_holder.begin() ) ) {
-                if( place_holder.compare( word ) != 0 ) 
-                    anagrams.insert( place_holder );
+            bool is_anagram = place_holder.size() == word.size() &&
+                              std::is_permutation( word.begin(), word.end(), place_holder.begin() ) &&
+                              place_holder.compare( word ) != 0; 
+            if( is_anagram ) {
+                anagrams.insert( place_holder );
             }
             place_holder.clear();
         }
